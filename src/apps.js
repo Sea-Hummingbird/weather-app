@@ -98,3 +98,4 @@ function showCurrentPosition(event){
 
 let currentCity = document.querySelector("#current-city");
 currentCity.addEventListener("click", showCurrentPosition);
+//test comment
