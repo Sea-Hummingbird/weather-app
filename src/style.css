@@ -2,7 +2,7 @@
   max-width: 600px;
   max-height: 1200px;
   margin: 0 auto;
-  background-image: url("file:///Users/claudiamedel/Documents/SheCodes/Week2/media/nyc.jpg");
+  background-image: url("file:../media/nyc.jpg");
   background-size: 600px;
   background-repeat: no-repeat;
   padding: 0px 70px 30px 70px;
