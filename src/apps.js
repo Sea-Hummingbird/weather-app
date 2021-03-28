@@ -30,6 +30,12 @@ function showTemp(response){
     let tempMaxValue = Math.round(response.data.main.temp_max);
     let tempMax = document.querySelector("#max");
     tempMax.innerHTML = tempMaxValue;
+    //change icon
+    let iconValue = response.data.weather[0].icon;
+    let weatherIcon = document.querySelector("#icon");
+    weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
+    weatherIcon.setAttribute("alt", response.data.weather[0].description)
+
 }
 
 function search(event){
@@ -73,6 +79,12 @@ function showCurrentPositionInfo(response){
     let tempMaxValue = Math.round(response.data.main.temp_max);
     let tempMax = document.querySelector("#max");
     tempMax.innerHTML = tempMaxValue;
+
+    //Change icon
+    let iconValue = response.data.weather[0].icon;
+    let weatherIcon = document.querySelector("#icon");
+    weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
+    weatherIcon.setAttribute("alt", response.data.weather[0].description)
 
 
 }
