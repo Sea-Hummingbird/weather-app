@@ -42,10 +42,16 @@ a:link {
   text-decoration: none;
   color: #0957d4;
 }
-a:hover a:visited {
-  cursor: pointer;
-  color: black;
+
+.active {
+  text-decoration: none;
   font-weight: bolder;
+  color: #000000;
+}
+.units {
+  position: relative;
+  font-size: 20px;
+  top: -32px;
 }
 
 .temp {
@@ -127,4 +133,8 @@ button:hover {
   position: relative;
   top: -50px;
   font-family: "Montserrat", sans-serif;
+}
+.openSourceCode {
+  text-decoration: none;
+  color: #0957d4;
 }

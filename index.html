@@ -40,8 +40,10 @@
                             <div class="col-6">
                                 <p class="temp-date-time-MM">
                                     <span class="temp" id="degrees"></span>
-                                    <a href="#" class="celcius" id="celcius">°C</a> |
-                                    <a href="#" class="farenheit" id="farenheit">°F</a></br>
+                                    <span class="units">
+                                        <a href="#" class="active" id="celsius-link">°C</a> |
+                                        <a href="#" id="fahrenheit-link">°F</a></br>
+                                    </span>
                                     <span id="date"></span></br>
                                    ↑<span id="max">-</span>° ↓<span id="min">-</span>° </br> 
                                     <hr />
@@ -108,7 +110,7 @@
             <button type="submit" class="btn btn-currentCity">CURRENT CITY</button>
         </form>
             <p class="code">
-                <a href="https://github.com/Sea-Hummingbird/weather-app" target="_blank" >Open-Source Code</a> by Claudia Medel
+                <a href="https://github.com/Sea-Hummingbird/weather-app" class="openSourceCode" target="_blank" >Open-Source Code</a> by Claudia Medel
             </p>
     </div>
     <script src="src/apps.js"></script>

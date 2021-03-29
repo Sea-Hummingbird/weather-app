@@ -13,6 +13,8 @@ let minutes = currentDate.getMinutes();
     
 idDate.innerHTML = `${day}, ${month} ${date}, ${hours}:${minutes} hrs`;
 
+
+
 //Search City and Show Temperature:
 function showTemp(response){
     //search Temp
@@ -36,6 +38,7 @@ function showTemp(response){
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
     weatherIcon.setAttribute("alt", response.data.weather[0].description)
 
+    celsiusTemp = response.data.main.temp;
 }
 
 function search(event){
@@ -85,8 +88,6 @@ function showCurrentPositionInfo(response){
     let weatherIcon = document.querySelector("#icon");
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
     weatherIcon.setAttribute("alt", response.data.weather[0].description)
-
-
 }
 
 function showCurrentCity(position){
@@ -110,4 +111,32 @@ function showCurrentPosition(event){
 
 let currentCity = document.querySelector("#current-city");
 currentCity.addEventListener("click", showCurrentPosition);
-//test comment
+let celsiusTemp = null;
+
+//Fahrenheit conversion
+    function displayFahrenheitTemp(event){
+        event.preventDefault();
+        celsiusLink.classList.remove("active");
+        fahrenheitLink.classList.add("active");
+        let tempElement = document.querySelector("#degrees");
+        let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+        tempElement.innerHTML = Math.round(fahrenheitTemp);
+        
+    }
+
+    let fahrenheitLink = document.querySelector("#fahrenheit-link");
+    fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+
+//Celsius conversion
+    function displayCelsiusTemp(event){
+        event.preventDefault();
+        celsiusLink.classList.add("active");
+        fahrenheitLink.classList.remove("active");
+        let tempElement = document.querySelector("#degrees");
+        tempElement.innerHTML = Math.round(celsiusTemp);
+        
+    }
+
+    let celsiusLink = document.querySelector("#celsius-link");
+    celsiusLink.addEventListener("click", displayCelsiusTemp);
