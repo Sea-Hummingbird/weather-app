@@ -37,6 +37,18 @@ function showTemp(response){
     let weatherIcon = document.querySelector("#icon");
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
     weatherIcon.setAttribute("alt", response.data.weather[0].description)
+    //show info
+    //humidity - you asked for precipitation but is not on the API
+    let humidityValue = Math.round(response.data.main.humidity);
+    let currentHum = document.querySelector("#humidity");
+    currentHum.innerHTML = humidityValue;
+    //Wind
+    let windValue = Math.round(response.data.wind.speed);
+    let currentWind = document.querySelector("#wind");
+    currentWind.innerHTML = windValue;
+
+    
+    
 
     celsiusTemp = response.data.main.temp;
 }

@@ -60,18 +60,13 @@ a:link {
   font-family: "Montserrat", sans-serif;
 }
 
-.day {
-  padding-top: 30px;
+.description {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   font-family: "Montserrat", sans-serif;
   text-transform: capitalize;
 }
-.fa-sun {
-  color: rgb(252, 177, 39);
-  text-align: center;
-  font-size: 80px;
-}
+
 .col-1 {
   font-size: 30px;
 }
@@ -80,6 +75,7 @@ a:link {
   text-align: center;
   font-size: 40px;
 }
+
 .forecast {
   padding-top: 10px;
   font-family: "Montserrat", sans-serif;
