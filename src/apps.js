@@ -11,7 +11,7 @@ let date = currentDate.getDate();
 let hours = currentDate.getHours();
 let minutes = currentDate.getMinutes();
     
-idDate.innerHTML = `${day}, ${month} ${date}, ${hours}:${minutes} hrs`;
+idDate.innerHTML = `${day}, ${month} ${date} </br> ${hours}:${minutes} hrs`;
 
 
 
