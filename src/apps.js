@@ -13,7 +13,27 @@ let minutes = currentDate.getMinutes();
     
 idDate.innerHTML = `${day}, ${month} ${date} </br> ${hours}:${minutes} hrs`;
 
+//Forecast
+function displayForecast() {
+    let forecastElement = document.querySelector("#forecast");
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
 
+    let forecastHTML = `<div class="row">`;
+    days.forEach(function (day) {
+        forecastHTML = forecastHTML + `
+        <div class="col-2">
+            <span class="icon">🌦</span> 
+            <span class="f-day">${day}</span>
+            <div class="f-temperatures">
+                ↑<span class="maxTemp">15</span>°
+                ↓<span class="minTemp">15</span>°
+            </div>
+        </div> `;
+    });
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+    console.log(forecastHTML);
+}
 
 //Search City and Show Temperature:
 function showTemp(response){
@@ -152,3 +172,5 @@ let celsiusTemp = null;
 
     let celsiusLink = document.querySelector("#celsius-link");
     celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+    displayForecast();
