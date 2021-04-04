@@ -131,12 +131,25 @@ function showCurrentPositionInfo(response){
     let tempMaxValue = Math.round(response.data.main.temp_max);
     let tempMax = document.querySelector("#max");
     tempMax.innerHTML = tempMaxValue;
+    
+    //Humidity
+    let humidityValue = Math.round(response.data.main.humidity);
+    let currentHum = document.querySelector("#humidity");
+    currentHum.innerHTML = humidityValue;
+    
+    //Wind
+    let windValue = Math.round(response.data.wind.speed);
+    let currentWind = document.querySelector("#wind");
+    currentWind.innerHTML = windValue;
+
 
     //Change icon
     let iconValue = response.data.weather[0].icon;
     let weatherIcon = document.querySelector("#icon");
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${iconValue}@2x.png`);
     weatherIcon.setAttribute("alt", response.data.weather[0].description)
+
+    getForecast(response.data.coord);
 }
 
 function showCurrentCity(position){
@@ -162,30 +175,3 @@ let currentCity = document.querySelector("#current-city");
 currentCity.addEventListener("click", showCurrentPosition);
 let celsiusTemp = null;
 
-//Fahrenheit conversion
-    function displayFahrenheitTemp(event){
-        event.preventDefault();
-        celsiusLink.classList.remove("active");
-        fahrenheitLink.classList.add("active");
-        let tempElement = document.querySelector("#degrees");
-        let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-        tempElement.innerHTML = Math.round(fahrenheitTemp);
-        
-    }
-
-    let fahrenheitLink = document.querySelector("#fahrenheit-link");
-    fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
-
-
-//Celsius conversion
-    function displayCelsiusTemp(event){
-        event.preventDefault();
-        celsiusLink.classList.add("active");
-        fahrenheitLink.classList.remove("active");
-        let tempElement = document.querySelector("#degrees");
-        tempElement.innerHTML = Math.round(celsiusTemp);
-        
-    }
-
-    let celsiusLink = document.querySelector("#celsius-link");
-    celsiusLink.addEventListener("click", displayCelsiusTemp);
