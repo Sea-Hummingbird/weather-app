@@ -14,25 +14,42 @@ let minutes = currentDate.getMinutes();
 idDate.innerHTML = `${day}, ${month} ${date} </br> ${hours}:${minutes} hrs`;
 
 //Forecast
-function displayForecast() {
+function formatDay(timestamp){
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    return days[day];
+}
+
+function displayForecast(response) {
+    let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
 
     let forecastHTML = `<div class="row">`;
-    days.forEach(function (day) {
+    forecast.forEach(function (forecastDay, index) {
+        if (index < 6) {
         forecastHTML = forecastHTML + `
         <div class="col-2">
-            <span class="icon">🌦</span> 
-            <span class="f-day">${day}</span>
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42" />
+            <span class="f-day">${formatDay(forecastDay.dt)}</span>
             <div class="f-temperatures">
-                ↑<span class="maxTemp">15</span>°
-                ↓<span class="minTemp">15</span>°
+                ↑<span class="maxTemp">${Math.round(forecastDay.temp.max)}°</span>
+                ↓<span class="minTemp">${Math.round(forecastDay.temp.min)}°</span>
             </div>
         </div> `;
+        }
     });
     forecastHTML = forecastHTML + `</div>`;
     forecastElement.innerHTML = forecastHTML;
     console.log(forecastHTML);
+}
+function getForecast(coordinates) {
+    console.log(coordinates);
+    let apiKey = "7d1e4ed28018ae107b24a46639aa6b3a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then(displayForecast);
 }
 
 //Search City and Show Temperature:
@@ -67,10 +84,10 @@ function showTemp(response){
     let currentWind = document.querySelector("#wind");
     currentWind.innerHTML = windValue;
 
-    
-    
-
     celsiusTemp = response.data.main.temp;
+
+    getForecast(response.data.coord);
+
 }
 
 function search(event){
@@ -172,5 +189,3 @@ let celsiusTemp = null;
 
     let celsiusLink = document.querySelector("#celsius-link");
     celsiusLink.addEventListener("click", displayCelsiusTemp);
-
-    displayForecast();
