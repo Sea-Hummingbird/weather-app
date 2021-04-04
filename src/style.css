@@ -81,15 +81,12 @@ a:link {
 .icon {
   font-size: 40px;
 }
-.col-2 {
+.f-day {
   font-weight: bold;
-  text-align: center;
   font-size: 15px;
+  text-align: center;
 }
-.f-temp {
-  font-size: 10px;
-  font-weight: lighter;
-}
+
 form {
   display: block;
   align: 0 auto;
