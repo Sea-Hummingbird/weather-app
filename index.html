@@ -46,10 +46,6 @@
                                    ↑<span id="max">-</span>° ↓<span id="min">-</span>° </br> 
                                 </p>
                         </div>
-                        <p class="phrase">
-                            Hello Sunshine! 😎
-                        </p>
-                        
                         <div class="info">
                             <div class="row">
                                 <div class="col-6">
@@ -66,21 +62,28 @@
                         </div>
                         
                         <hr />
+                        <p class="weeklyForecast">Weekly Forecast</p>
                         <div class="forecast" id="forecast">
                         </div>
-        <form id="another-city">
-            <div class="mb-3">
-                <input type="text" class="change-city" id="change-city1" placeholder="Another City?">
-                <button type="submit" class="btn btn-search">SEARCH 🔍</button>
+        <div class="row search">
+            <div class="col-11">
+                <form id="another-city">
+                    <div class="mb-1">
+                        <input type="text" class="change-city" id="change-city1" placeholder="Another City?">
+                        <button type="submit" class="btn btn-search">SEARCH</button>
+                    </div>
+                </form>
             </div>
-        </form>
-        <form id="current-city">
-            <button type="submit" class="btn btn-currentCity">➤</button>
-        </form>
-            <p class="code">
-                <a href="https://github.com/Sea-Hummingbird/weather-app" class="openSourceCode" target="_blank">Open-Source Code</a>
-                by Claudia Medel
-            </p>
+            <div class="col-1">
+                <form id="current-city">
+                    <button type="submit" class="btn btn-currentCity">➤</button>
+                </form>
+            </div>
+        </div>
+         <p class="code">
+            <a href="https://github.com/Sea-Hummingbird/weather-app" class="openSourceCode" target="_blank">Open-Source Code</a>
+            by Claudia Medel
+        </p>
     </div>
     <script src="src/apps.js"></script>
 </body>
