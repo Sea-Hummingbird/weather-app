@@ -22,6 +22,7 @@ function formatDay(timestamp){
     return days[day];
 }
 
+
 function displayForecast(response) {
     let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
@@ -51,6 +52,7 @@ function getForecast(coordinates) {
     console.log(apiUrl);
     axios.get(apiUrl).then(displayForecast);
 }
+
 
 //Search City and Show Temperature:
 function showTemp(response){
@@ -87,8 +89,11 @@ function showTemp(response){
     celsiusTemp = response.data.main.temp;
 
     getForecast(response.data.coord);
+    //Change Background Image
+    updateBackgroundImg(iconValue);
 
 }
+
 
 function search(event){
     event.preventDefault();
@@ -150,7 +155,11 @@ function showCurrentPositionInfo(response){
     weatherIcon.setAttribute("alt", response.data.weather[0].description)
 
     getForecast(response.data.coord);
+    
+    //Change Background Image
+    updateBackgroundImg(iconValue);
 }
+
 
 function showCurrentCity(position){
     let latitude = position.coords.latitude;
@@ -162,6 +171,35 @@ function showCurrentCity(position){
 
     axios.get(currentApiUrl).then(showCurrentPositionInfo);
 
+}
+
+//Change Background Image
+function updateBackgroundImg (icon){
+    let weatherPics = {
+        "01d": "clear",
+        "01n": "clear",
+        "02d": "partly-cloudy",
+        "02n": "partly-cloudy",
+        "03d": "partly-cloudy",
+        "03n": "partly-cloudy",
+        "04d": "cloudy",
+        "04n": "cloudy",
+        "09d": "rainy",
+        "09n": "rainy",
+        "10d": "rainy",
+        "10n": "rainy",
+        "11d": "stormy",
+        "11n": "stormy",
+        "13d": "snowy",
+        "13n": "snowy",
+        "50d": "foggy",
+        "50n": "foggy",       
+    }
+    let weatherPic = weatherPics[icon];
+    if (weatherPic === undefined) {
+        console.log(`no weather picture found for ${icon}`);
+    }
+    document.querySelector("#container-pic").style.backgroundImage = `url('media/${weatherPic}.jpg')`;
 }
 
 
