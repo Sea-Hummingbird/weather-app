@@ -213,3 +213,16 @@ let currentCity = document.querySelector("#current-city");
 currentCity.addEventListener("click", showCurrentPosition);
 let celsiusTemp = null;
 
+//Show Default city
+
+function displayDefaultCity(city){
+    let defaultCity = document.querySelector("#city");
+    defaultCity.innerHTML = city;
+    let apiKey = "7d1e4ed28018ae107b24a46639aa6b3a";
+    let units = "metric";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(showTemp)
+}
+
+displayDefaultCity("Tokyo");
+
